@@ -493,7 +493,7 @@ ames_rec <- prep(mod_rec, training = ames_train, verbose = TRUE)
 ```
 ]
 
-.panel[.panel-name[Fitting the model]
+.panel[.panel-name[Fitting]
 
 ```{r error=TRUE}
 rf_mod <- rand_forest(
