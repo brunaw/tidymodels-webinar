@@ -12,3 +12,5 @@ In times of a rich availability of different packages and software for machine l
 
 
 Talk URL: https://bit.ly/3t1qBPP
+
+[URL](/slides/slides.html)
