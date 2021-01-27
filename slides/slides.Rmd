@@ -235,27 +235,23 @@ background-color: #fef9c8
 ## Good practice: suffixes 
 
 - `_mod` for a `parsnip` model specification
-
 - `_fit` for a fitted model
-
 - `_rec` for a recipe
-
 - `_tune` for a tuning object
 
 
 ---
 class: middle 
 .pull-left[  
-## Data: Ames Housing Data
+## Data: Ames Housing
 
 A data set from De Cock (2011) with 82 columns recorded for 2,930 properties in Ames IA. 
 
-Target variable: Sale price (continuous)
-
+Target variable: Sale price
 Predictors: 
   - Location (e.g. neighborhood, lat and long) 
   - House elements (garage, year built, air conditioner,
- number of bedrooms, baths, and so on)
+ number of bedrooms/baths, etc)
 ]
 
 .pull-right[
@@ -706,6 +702,6 @@ class: bottom, left, inverse
 [Page: http://brunaw.com/](http://brunaw.com/)
 
 
-Presentation template by [Dr. Alison Hill](http://twitter.com/apreshill) & 
+Slides template by [Dr. Alison Hill](http://twitter.com/apreshill) & 
 illustrations by [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
 
