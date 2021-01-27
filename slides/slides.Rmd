@@ -97,7 +97,7 @@ Where we'll show you how to get your teaching materials online with R Markdown.
 
 layout: true
 
-<a class="footer-link" href="http://brunaw.com/tidymodels-webinar/slides/slides.html">Talk URL</a>
+<a class="footer-link" href="http://brunaw.com/tidymodels-webinar/slides/slides.html">bit.ly/2YioY23</a>
 
 ---
 
