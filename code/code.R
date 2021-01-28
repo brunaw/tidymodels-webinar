@@ -67,7 +67,7 @@ test_pred %>%
   ggplot(aes(x = Sale_Price, y = .pred)) +
   geom_point(colour = "#ff6767", alpha = 1) +
   geom_abline() + 
-  labs(x = "Target Variable", y = "Density", 
+  labs(x = "Target Variable", y = "Predictions", 
        title = 
          paste0("Test MSE: ", round(rmse$.estimate^2, 3))) +
   theme_classic(18) +
@@ -145,7 +145,6 @@ autoplot(ranger_tune, metric = "rsq") +
 
 # Extracting the best model
 best_res <- select_best(ranger_tune, metric = "rmse")
-final_rf_mod <- rf_mod <- 
   rand_forest(mtry = best_res$mtry) %>%
   set_mode("regression") %>%
   set_engine("ranger", 
@@ -165,7 +164,7 @@ final_pred %>%
   ggplot(aes(x = Sale_Price, y = .pred)) +
   geom_point(colour = "#ff6767", alpha = 1) +
   geom_abline() + 
-  labs(x = "Target Variable", y = "Density", 
+  labs(x = "Target Variable", y = "Predictions", 
        title = 
          paste0("Test MSE: ", round(final_rmse$.estimate^2, 4))) +
   theme_classic(18) +
