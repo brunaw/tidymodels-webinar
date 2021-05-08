@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Machine Learning com tidymodels: Esquenta</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Bruna Wundervald" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link rel="stylesheet" href="assets/css/my-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/my-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: title-slide, center
+
+.pull-left[
+
+
+# Machine Learning com `tidymodels`: Esquenta 
+
+## Bruna Wundervald
+
+### R-Ladies São Paulo
+### Maio, 2021
+
+]
+
+.pull-right[
+
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div class="row"&gt;
+
+&lt;div class="row"&gt;
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidymodels.svg" width="200"&gt;
+&lt;/div&gt;
+
+&lt;div class="column"&gt;
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/parsnip.svg" width="300"&gt;
+&lt;/div&gt;
+
+&lt;div class="column"&gt;
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/broom.svg" width="200"&gt;
+  &lt;/div&gt;
+
+  
+&lt;div class="column"&gt;
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/rsample.svg" width="300"&gt;
+  &lt;/div&gt;  
+  
+  &lt;div class="column"&gt;
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/recipes.svg" width="300"&gt;
+  &lt;/div&gt;  
+
+&lt;/div&gt;
+
+]
+
+???
+
+Welcome to the webinar on sharing on short notice
+
+Where we'll show you how to get your teaching materials online with R Markdown.
+
+
+---
+
+name: clouds
+class: center, middle
+background-image: url(images/sea.jpg)
+background-size: cover
+
+
+
+
+
+
+
+&lt;img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/18500161?s=460&amp;u=34b7f4888b6fe48b3c208beb51c69c146ae050cf&amp;v=4" width="150px"/&gt;
+
+### Bruna Wundervald
+
+
+[GitHub: @brunaw](https://github.com/brunaw)  
+[Twitter: @bwundervald](https://twitter.com/bwundervald)  
+[Page: http://brunaw.com/](http://brunaw.com/)
+
+
+---
+class: middle, center
+
+## .big-text[Hoje]
+
+
+&lt;div class="flex" style="margin: 0 1em;"&gt;
+  &lt;div class="column"&gt;
+    &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/tidymodels.svg"" style="width: 75%;"&gt;
+  &lt;/div&gt;
+  
+???
+
+Here's who I know you are...
+
+--
+   &lt;div class="column"style="margin: 0 1em;"&gt;
+    &lt;h3&gt; Engenharia de variáveis  &lt;/h3&gt;
+    &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/recipes.svg" style="width: 65%;"&gt;
+  &lt;/div&gt;
+  
+
+???
+
+--
+   &lt;div class="column"style="margin: 0 1em;"&gt;
+    &lt;h3&gt; Reamostragem  &lt;/h3&gt;
+    &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/rsample.svg" style="width: 65%;"&gt;
+  &lt;/div&gt;
+  
+
+???
+
+--
+   &lt;div class="column"style="margin: 0 1em;"&gt;
+    &lt;h3&gt; Interface de modelagem &lt;/h3&gt;
+    &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/parsnip.svg" style="width: 65%;"&gt;
+  &lt;/div&gt;
+  
+
+???
+
+--
+   &lt;div class="column"style="margin: 0 1em;"&gt;
+    &lt;h3&gt; Workflows  &lt;/h3&gt;
+    &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/
+workflows.svg" style="width: 65%;"&gt;
+  &lt;/div&gt;
+  
+
+???
+
+--
+   &lt;div class="column"style="margin: 0 1em;"&gt;
+    &lt;h3&gt; Comparação de modelos  &lt;/h3&gt;
+    &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/SVG/
+broom.svg" style="width: 65%;"&gt;
+  &lt;/div&gt;
+  
+
+???
+
+
+You have R Markdown files for teaching...
+
+
+---
+class: middle 
+
+# O pacote `tidymodels` 
+
+- Criado e mantido por [Max Kuhn](https://github.com/topepo) e o time `tidymodels` 
+
+- Coleção unificada de pacotes para modelagem &amp; 
+machine learning em `R`
+
+
+- Se integra facilmente com os outros pacotes do `tidyverse`  
+
+- Focado em eficiência &amp; reproducibilidade
+
+---
+background-color: #fef9c8
+class: middle
+
+## Machine Learning: Passos básicos
+
+  1. Separação em treino e teste com `rsample`
+  2. Engenharia de variáveis com `recipes`
+  3. Especificação de modelos e ajuste com `parsnip`
+  4. Avaliação e seleção de modelos com `broom`
+
+---
+class: middle
+background-color: #fef9c8
+
+# 1. Separação em treino e teste 
+
+
+---
+class: middle
+
+# 1. Separação em treino e teste 
+
+&gt; Função principal: possibilitar a validação de algoritmos de machine learning 
+
+- Separação de uma base de treino (geralmente entre 70% e 90% dos dados),
+na qual o modelo será ajustado 
+
+- Separação de uma base de teste (o restante dos dados), na qual o modelo
+será avaliado em dados não vistos durante o treino
+
+  - Como o modelo se comporta caso eu tenha novos dados? 
+  
+- É um passo **muito** importante
+
+---
+class: middle
+background-color: #fef9c8
+
+# 2. Engenharia de variáveis
+
+(...ou "feature engineering")
+
+
+---
+class: middle
+
+# 2. Engenharia de variáveis
+
+&gt; Função principal: transformar e criar variáveis que tragam informação ao modelo
+
+- Pode ser a transformação de variáveis (log, imputação, normalização, transformação em número/matriz)
+
+- Ou pode ser a criação de novas variáveis: 
+  - Operações entre variáveis já existentes
+  - Extração de informação de texto ou datas
+  - Agrupamentos
+  - Interações entre variáveis
+
+
+- É um processo bem subjetivo
+
+---
+class: middle
+background-color: #fef9c8
+
+# 3. Especificação de modelos e ajuste
+
+---
+class: middle
+
+# 3. Especificação de modelos e ajuste
+
+&gt; Função principal: definir e ajustar os modelos escolhidos
+
+- Definir um ou mais modelos que serão ajustado e comparados
+
+- Definir os hyperparâmetros de cada modelo e se eles serão "tunados"
+
+  - Tunagem: seleção de valores ótimos para os hyperparâmetros
+  
+- Ajuste dos modelos definidos 
+
+---
+class: middle
+background-color: #fef9c8
+
+# 4. Avaliação e seleção de modelos
+
+---
+class: middle
+
+# 4. Avaliação e seleção de modelos
+
+&gt; Função principal: calcular as métricas de predição e selecionar os melhores
+modelos 
+
+- Métricas mais comuns: acurácia (classificação) e  erro quadrático médio  (regressão)
+
+- A métrica escolhida é calculada utilizando a base de teste
+
+- Os modelos são comparados e selecionados, geralmente em termos da acurácia
+  - Tipo do algoritmo
+  - Valores dos hyperparâmetros
+  
+  
+
+
+---
+
+
+class: bottom, left, inverse
+
+
+&lt;img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/18500161?s=460&amp;u=34b7f4888b6fe48b3c208beb51c69c146ae050cf&amp;v=4" width="150px"/&gt;
+
+## Obrigada!
+
+### Me encontre em...
+[GitHub: @brunaw](https://github.com/brunaw)  
+
+[Twitter: @bwundervald](https://twitter.com/bwundervald)
+
+[Página pessoal: http://brunaw.com/](http://brunaw.com/)
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLanguage": ["r", "css", "yaml"],
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
