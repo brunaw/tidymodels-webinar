@@ -13,4 +13,4 @@ Abstract
 In times of a rich availability of different packages and software for machine learning, it is not always easy to know which ones are the best to use. In an attempt to provide a unified grammar for machine learning in R, the tidymodels is a group of packages specifically designed to perform modelling tasks and to perfectly integrate with the tidyverse ecosystem at the same time. In this talk, I will give an introduction to its main packages, showing how they can be used for the pre-processing of data, and training and validation of machine learning models.
 
 
-Talk slides at [this link](/slides/slides.html)
+Talk slides at [this link](http://brunaw.com/tidymodels-webinar/slides/slides.html
